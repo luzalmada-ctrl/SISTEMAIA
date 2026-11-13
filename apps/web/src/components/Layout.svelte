@@ -4,6 +4,7 @@
   import Rubrics from '../pages/Rubrics.svelte';
   import Geofences from '../pages/Geofences.svelte';
   import MyGrades from '../pages/MyGrades.svelte';
+  import Submissions from '../pages/Submissions.svelte';
 
   export let user;
   export let route;
@@ -12,7 +13,7 @@
 
   const nav = [
     { id: 'dashboard', label: 'Dashboard' },
-    { id: 'submissions', label: 'Entregas' },
+    { id: 'submissions', label: 'Entregas', expandable: true },
     { id: 'students', label: 'Alumnos' },
     { id: 'assignments', label: 'Tareas', expandable: true },
     { id: 'rubrics', label: 'Rúbricas', expandable: true },
@@ -58,6 +59,11 @@
       </div>
       {#if item.expandable && expandedItem === item.id}
         <div class="nav-expanded">
+          {#if item.id === 'submissions'}
+            <div class="expanded-content">
+              <Submissions />
+            </div>
+          {/if}
           {#if item.id === 'assignments'}
             <div class="expanded-content">
               <Assignments />
