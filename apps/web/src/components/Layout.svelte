@@ -26,9 +26,7 @@
     location.hash = `#/${id}`;
   }
 
-  function handleNavClick(event, id) {
-    event.preventDefault();
-    event.stopPropagation();
+  function handleNavClick(id) {
     const item = nav.find(n => n.id === id);
     if (item?.expandable) {
       expandedItem = expandedItem === id ? null : id;
@@ -51,8 +49,8 @@
       <div
         class="nav-item"
         class:active={route === item.id}
-        on:click={(e) => handleNavClick(e, item.id)}
-        on:keydown={(e) => e.key === 'Enter' && handleNavClick(e, item.id)}
+        on:click={() => handleNavClick(item.id)}
+        on:keydown={(e) => e.key === 'Enter' && handleNavClick(item.id)}
         role="button"
         tabindex="0"
       >
