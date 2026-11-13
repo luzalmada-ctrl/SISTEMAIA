@@ -3,6 +3,7 @@
   import Assignments from '../pages/Assignments.svelte';
   import Rubrics from '../pages/Rubrics.svelte';
   import Geofences from '../pages/Geofences.svelte';
+  import MyGrades from '../pages/MyGrades.svelte';
 
   export let user;
   export let route;
@@ -16,7 +17,7 @@
     { id: 'assignments', label: 'Tareas', expandable: true },
     { id: 'rubrics', label: 'Rúbricas', expandable: true },
     { id: 'geofences', label: 'Geocercas', expandable: true },
-    { id: 'mygrades', label: 'Mis Calificaciones' },
+    { id: 'mygrades', label: 'Mis Calificaciones', expandable: true },
   ];
 
   let expandedItem = null;
@@ -72,6 +73,11 @@
           {#if item.id === 'geofences'}
             <div class="expanded-content">
               <Geofences />
+            </div>
+          {/if}
+          {#if item.id === 'mygrades'}
+            <div class="expanded-content">
+              <MyGrades />
             </div>
           {/if}
         </div>
