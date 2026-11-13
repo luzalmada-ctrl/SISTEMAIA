@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Exec(Get-ChildItem)",
+      "Exec('C:\\Program Files\\nodejs\\node.exe')",
+      "Exec(bun)",
+      "Exec(npm run)",
+      "Exec(curl)"
+    ]
+  }
+}
