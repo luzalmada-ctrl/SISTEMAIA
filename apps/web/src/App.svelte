@@ -58,6 +58,6 @@
   <Login on:login={onLogin} />
 {:else}
   <Layout {user} bind:route on:logout={logout}>
-    <Page />
+    <svelte:component this={Page} />
   </Layout>
 {/if}
