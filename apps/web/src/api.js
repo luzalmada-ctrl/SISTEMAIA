@@ -1,6 +1,9 @@
-// En Vercel producción, API_BASE está vacío para usar rutas relativas (/api/...)
+// Detectar si estamos en Vercel producción
+const isVercel = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+
+// En Vercel producción, usa rutas relativas (/api/...)
 // En desarrollo local, usa VITE_API_URL (ej: http://localhost:3001)
-const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+const API_BASE = (isVercel ? '' : (import.meta.env.VITE_API_URL || '')).replace(/\/$/, '');
 const TOKEN_KEY = 'sistemaia_token';
 const USER_KEY = 'sistemaia_user';
 
