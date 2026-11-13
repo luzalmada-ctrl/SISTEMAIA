@@ -93,6 +93,7 @@
         geofences = [...geofences, { ...saved, layer }];
         newName = '';
       }
+      await loadEvents();
     } catch (e) {
       error = `No se pudo guardar la geocerca: ${e.message}`;
     }
@@ -109,6 +110,7 @@
     geofences = geofences.filter((g) => g.id !== id);
     delete presence[id];
     presence = presence;
+    await loadEvents();
   }
 
   async function deleteAllGeofences() {
@@ -124,6 +126,7 @@
     geofenceMap.clearGeofences();
     geofences = [];
     presence = {};
+    await loadEvents();
   }
 
   // ---------- Detección de entrada/salida ----------

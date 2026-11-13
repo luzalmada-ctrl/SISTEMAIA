@@ -27,10 +27,13 @@
     criteria = [{ name: '', description: '', max_points: 10, weight: 1 }];
     selectedFile = null;
   }
-  function editRubric(r) {
-    editing = r.id;
-    form = { title: r.title, description: r.description || '', attachment_url: r.attachment_url || '', attachment_name: r.attachment_name || '' };
-    criteria = (r.rubric_criteria || [])
+  async function editRubric(r) {
+    await load();
+    const updated = rubrics.find(item => item.id === r.id);
+    if (!updated) return;
+    editing = updated.id;
+    form = { title: updated.title, description: updated.description || '', attachment_url: updated.attachment_url || '', attachment_name: updated.attachment_name || '' };
+    criteria = (updated.rubric_criteria || [])
       .slice()
       .sort((a, b) => (a.position || 0) - (b.position || 0))
       .map((c) => ({ name: c.name, description: c.description || '', max_points: c.max_points, weight: c.weight }));

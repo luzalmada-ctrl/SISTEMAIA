@@ -23,16 +23,19 @@
     form = { title: '', description: '', due_date: '', rubric_id: rubrics[0]?.id || '', status: 'open', attachment_url: '', attachment_name: '' };
     selectedFile = null;
   }
-  function editAssignment(a) {
-    editing = a.id;
+  async function editAssignment(a) {
+    await load();
+    const updated = assignments.find(item => item.id === a.id);
+    if (!updated) return;
+    editing = updated.id;
     form = {
-      title: a.title,
-      description: a.description || '',
-      due_date: a.due_date || '',
-      rubric_id: a.rubric_id,
-      status: a.status,
-      attachment_url: a.attachment_url || '',
-      attachment_name: a.attachment_name || '',
+      title: updated.title,
+      description: updated.description || '',
+      due_date: updated.due_date || '',
+      rubric_id: updated.rubric_id,
+      status: updated.status,
+      attachment_url: updated.attachment_url || '',
+      attachment_name: updated.attachment_name || '',
     };
     selectedFile = null;
   }

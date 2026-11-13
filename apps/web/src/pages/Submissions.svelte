@@ -104,7 +104,7 @@
             <td>{s.grades ? `${s.grades.total_score} / ${s.grades.max_score}` : '—'}</td>
             <td>
               {#if canGrade}
-                <button class="btn small" on:click={() => (grading = s)}>
+                <button class="btn small" on:click={async () => { await load(); grading = s; }}>
                   {s.grades?.id ? 'Editar' : 'Calificar'}
                 </button>
               {/if}

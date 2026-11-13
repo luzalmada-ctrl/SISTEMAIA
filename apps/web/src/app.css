@@ -120,11 +120,29 @@ textarea { min-height: 90px; resize: vertical; }
   cursor: pointer;
   background: var(--accent-2);
   color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.btn:hover { filter: brightness(1.1); }
-.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(236, 72, 153, 0.4);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn.secondary { background: #334155; }
+.btn.secondary:hover:not(:disabled) {
+  filter: brightness(1.2);
+  box-shadow: 0 4px 8px rgba(51, 65, 85, 0.4);
+}
 .btn.danger { background: #7f1d1d; }
+.btn.danger:hover:not(:disabled) {
+  filter: brightness(1.2);
+  box-shadow: 0 4px 8px rgba(127, 29, 29, 0.4);
+}
 .btn.small { padding: 5px 10px; font-size: 12px; }
 .btn-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
 

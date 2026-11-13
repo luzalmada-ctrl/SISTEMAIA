@@ -17,9 +17,12 @@
     editing = null;
     form = { code: '', name: '', email: '', group_name: '' };
   }
-  function editStudent(s) {
-    editing = s.id;
-    form = { code: s.code || '', name: s.name, email: s.email || '', group_name: s.group_name || '' };
+  async function editStudent(s) {
+    await load();
+    const updated = students.find(item => item.id === s.id);
+    if (!updated) return;
+    editing = updated.id;
+    form = { code: updated.code || '', name: updated.name, email: updated.email || '', group_name: updated.group_name || '' };
   }
 
   async function save() {
