@@ -44,7 +44,13 @@
 
 <div class="layout">
   <aside class="sidebar">
-    <img src="/assets/logo.png" alt="TIMS Gestión de Calificaciones" class="logo" />
+    <button 
+      class="logo-button"
+      on:click={() => go('dashboard')}
+      aria-label="Ir al Dashboard"
+    >
+      <img src="/assets/logo.png" alt="TIMS Gestión de Calificaciones" class="logo" />
+    </button>
     <div class="brand-sub">Revisión SolidWorks</div>
     {#each nav as item}
       <div

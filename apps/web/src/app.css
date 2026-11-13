@@ -39,14 +39,27 @@ a { color: var(--accent); text-decoration: none; }
   top: 0;
   height: 100vh;
 }
-.sidebar .logo {
+.sidebar .logo-button {
   width: 100%;
   max-width: 200px;
   margin: 0 0 18px;
-  display: block;
   background: var(--panel);
+  border: none;
   border-radius: 8px;
   padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.sidebar .logo-button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+.sidebar .logo-button:active {
+  transform: scale(0.98);
+}
+.sidebar .logo-button .logo {
+  width: 100%;
+  display: block;
 }
 .sidebar .brand-sub { font-size: 11px; color: var(--muted); margin: -14px 0 16px; }
 .nav-item {
