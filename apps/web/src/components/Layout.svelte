@@ -1,6 +1,8 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import Assignments from '../pages/Assignments.svelte';
+  import Rubrics from '../pages/Rubrics.svelte';
+  import Geofences from '../pages/Geofences.svelte';
 
   export let user;
   export let route;
@@ -12,8 +14,8 @@
     { id: 'submissions', label: 'Entregas' },
     { id: 'students', label: 'Alumnos' },
     { id: 'assignments', label: 'Tareas', expandable: true },
-    { id: 'rubrics', label: 'Rúbricas' },
-    { id: 'geofences', label: 'Geocercas' },
+    { id: 'rubrics', label: 'Rúbricas', expandable: true },
+    { id: 'geofences', label: 'Geocercas', expandable: true },
     { id: 'mygrades', label: 'Mis Calificaciones' },
   ];
 
@@ -60,6 +62,16 @@
           {#if item.id === 'assignments'}
             <div class="expanded-content">
               <Assignments />
+            </div>
+          {/if}
+          {#if item.id === 'rubrics'}
+            <div class="expanded-content">
+              <Rubrics />
+            </div>
+          {/if}
+          {#if item.id === 'geofences'}
+            <div class="expanded-content">
+              <Geofences />
             </div>
           {/if}
         </div>
