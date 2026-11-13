@@ -18,6 +18,7 @@
 
   function go(id) {
     location.hash = `#/${id}`;
+    route = id;
   }
 
   function logout() {

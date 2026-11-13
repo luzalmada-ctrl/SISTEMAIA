@@ -57,7 +57,7 @@
 {#if !authed}
   <Login on:login={onLogin} />
 {:else}
-  <Layout {user} {route} on:logout={logout}>
+  <Layout {user} bind:route on:logout={logout}>
     <Page />
   </Layout>
 {/if}
