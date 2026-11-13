@@ -1,3 +1,5 @@
+// En Vercel producción, API_BASE está vacío para usar rutas relativas (/api/...)
+// En desarrollo local, usa VITE_API_URL (ej: http://localhost:3001)
 const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 const TOKEN_KEY = 'sistemaia_token';
 const USER_KEY = 'sistemaia_user';
@@ -32,7 +34,11 @@ export async function api(path, { method = 'GET', body, formData } = {}) {
   if (getToken()) headers.Authorization = `Bearer ${getToken()}`;
   if (body !== undefined) headers['Content-Type'] = 'application/json';
 
-  const res = await fetch(`${API_BASE}/api${path}`, {
+  // En producción Vercel (API_BASE vacío), usa ruta relativa: /api/...
+  // En desarrollo local (API_BASE seteado), usa URL completa: http://localhost:3001/api/...
+  const url = API_BASE ? `${API_BASE}/api${path}` : `/api${path}`;
+
+  const res = await fetch(url, {
     method,
     headers,
     body: formData ?? (body !== undefined ? JSON.stringify(body) : undefined),
